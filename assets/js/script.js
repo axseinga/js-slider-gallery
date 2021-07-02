@@ -43,7 +43,10 @@ const initEvents = function (imagesList, sliderRootElement) {
   // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-close]
   // tylko wtedy, gdy użytkownik kliknie w [.js-slider__zoom]
   const zoom = sliderRootElement.querySelector(".js-slider__zoom");
-  zoom.addEventListener("click", onClose, true);
+  zoom.addEventListener("click", function (event) {
+    event.stopPropagation();
+    onClose();
+  });
 };
 
 const fireCustomEvent = function (element, name) {
@@ -101,12 +104,6 @@ const onImageClick = function (event, sliderRootElement, imagesSelector) {
     thumbImg.setAttribute("src", src);
     sliderThumbs.appendChild(newThumb);
   });
-  /*const firstThumb = document.querySelector(
-    ".js-slider__thumbs-item--prototype"
-  );
-  if (firstThumb) {
-    firstThumb.remove();
-  }*/
   // 6. zaznaczyć przy pomocy klasy [.js-slider__thumbs-image--current], który element jest aktualnie wyświetlany
   const thumbImages = Array.from(sliderThumbs.querySelectorAll("img"));
   thumbImages.forEach(function (img) {
@@ -182,21 +179,17 @@ const onImagePrev = function (event) {
 };
 
 const onClose = function (event) {
-  /*const arrows = document.querySelectorAll(".js-slider__nav");
-  arrows.forEach(function (a) {
-    event.stopImmediatePropagation();
-  });
   // todo:
   // 1. należy usunać klasę [js-slider--active] dla [.js-slider]
   const slider = document.querySelector(".js-slider");
-  slider.classList.remove("js-slider--active");*/
+  //slider.classList.remove("js-slider--active");
   // 2. należy usunać wszystkie dzieci dla [.js-slider__thumbs] pomijając[.js-slider__thumbs-item--prototype]
   /*const sliderThumbsList = document.querySelectorAll(".js-slider__thumbs-item");
   const sliderThumb = document.querySelector(".js-slider__thumbs");
   console.log(sliderThumb);
   sliderThumbsList.forEach(function (thumb) {
     if (!thumb.classList.contains("js-slider__thumbs-item--prototype")) {
-      console.log(thumb);
+      thumb.parentElement.removeChild(thumb);
     }
   });*/
 };
