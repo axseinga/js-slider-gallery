@@ -31,22 +31,25 @@ const initEvents = function (imagesList, sliderRootElement) {
   // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-img-next]
   // na elemencie [.js-slider__nav--next]
   const navNext = sliderRootElement.querySelector(".js-slider__nav--next");
-  navNext.addEventListener("click", onImageNext);
+  navNext.addEventListener("click", function (event) {
+    event.stopPropagation();
+    onImageNext();
+  });
 
   // todo:
   // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-img-prev]
   // na elemencie [.js-slider__nav--prev]
   const navPrev = sliderRootElement.querySelector(".js-slider__nav--prev");
-  navPrev.addEventListener("click", onImagePrev);
+  navPrev.addEventListener("click", function (event) {
+    event.stopPropagation();
+    onImagePrev();
+  });
 
   // todo:
   // utwórz nasłuchiwanie eventu o nazwie [click], który ma uruchomić event [js-slider-close]
   // tylko wtedy, gdy użytkownik kliknie w [.js-slider__zoom]
   const zoom = sliderRootElement.querySelector(".js-slider__zoom");
-  zoom.addEventListener("click", function (event) {
-    event.stopPropagation();
-    onClose();
-  });
+  zoom.addEventListener("click", onClose);
 };
 
 const fireCustomEvent = function (element, name) {
@@ -136,7 +139,6 @@ const onImageNext = function (event) {
     const newSrcCurr = nextImg.getAttribute("src");
     sliderImg.setAttribute("src", newSrcCurr);
   } else {
-    const slider = document.querySelector(".js-slider__thumbs");
     const firstImg = currImg.parentElement.parentElement
       .querySelector("*:nth-child(2)")
       .querySelector("img");
@@ -167,7 +169,6 @@ const onImagePrev = function (event) {
     const newSrcCurr = prevImg.getAttribute("src");
     sliderImg.setAttribute("src", newSrcCurr);
   } else {
-    const slider = document.querySelector(".js-slider__thumbs");
     const lastImg =
       currImg.parentElement.parentElement.lastElementChild.querySelector("img");
     currImg.classList.remove("js-slider__thumbs-image--current");
@@ -179,19 +180,16 @@ const onImagePrev = function (event) {
 };
 
 const onClose = function (event) {
-  // todo:
-  // 1. należy usunać klasę [js-slider--active] dla [.js-slider]
   const slider = document.querySelector(".js-slider");
-  //slider.classList.remove("js-slider--active");
-  // 2. należy usunać wszystkie dzieci dla [.js-slider__thumbs] pomijając[.js-slider__thumbs-item--prototype]
-  /*const sliderThumbsList = document.querySelectorAll(".js-slider__thumbs-item");
+  slider.classList.remove("js-slider--active");
+  const sliderThumbsList = document.querySelectorAll(".js-slider__thumbs-item");
   const sliderThumb = document.querySelector(".js-slider__thumbs");
   console.log(sliderThumb);
   sliderThumbsList.forEach(function (thumb) {
     if (!thumb.classList.contains("js-slider__thumbs-item--prototype")) {
       thumb.parentElement.removeChild(thumb);
     }
-  });*/
+  });
 };
 
 //* PYTANIE: czy lepiej jest po kilka razy ustalac zmiennie w kazdej funkcji czy lepiej jest je wyciagnac poza funkcje?*/
