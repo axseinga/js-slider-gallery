@@ -170,68 +170,6 @@ const onImagePrev = function (event) {
   changeImg(newElement, startImg, currImg);
 };
 
-/*
-
-/*const onImageNext = function (event) {
-  console.log(this, "onImageNext");
-  // [this] wskazuje na element [.js-slider]
-
-  const currImg = document.querySelector(".js-slider__thumbs-image--current");
-  const parent = currImg.parentElement;
-  const nextElement = parent.nextElementSibling;
-  if (
-    nextElement &&
-    !nextElement.classList.contains("js-slider__thumbs-item--prototype")
-  ) {
-    const nextImg = nextElement.querySelector("img");
-    if (nextImg) {
-      currImg.classList.remove("js-slider__thumbs-image--current");
-      nextImg.classList.add("js-slider__thumbs-image--current");
-    }
-    const sliderImg = document.querySelector(".js-slider__image");
-    const newSrcCurr = nextImg.getAttribute("src");
-    sliderImg.setAttribute("src", newSrcCurr);
-  } else {
-    const firstImg = currImg.parentElement.parentElement
-      .querySelector("*:nth-child(2)")
-      .querySelector("img");
-    currImg.classList.remove("js-slider__thumbs-image--current");
-    firstImg.classList.add("js-slider__thumbs-image--current");
-    const sliderImg = document.querySelector(".js-slider__image");
-    const newSrcCurr = firstImg.getAttribute("src");
-    sliderImg.setAttribute("src", newSrcCurr);
-  }
-};
-
-const onImagePrev = function (event) {
-  console.log(this, "onImagePrev");
-
-  const currImg = document.querySelector(".js-slider__thumbs-image--current");
-  const parent = currImg.parentElement;
-  const prevElement = parent.previousElementSibling;
-  if (
-    prevElement &&
-    !prevElement.classList.contains("js-slider__thumbs-item--prototype")
-  ) {
-    const prevImg = prevElement.querySelector("img");
-    if (prevImg) {
-      currImg.classList.remove("js-slider__thumbs-image--current");
-      prevImg.classList.add("js-slider__thumbs-image--current");
-    }
-    const sliderImg = document.querySelector(".js-slider__image");
-    const newSrcCurr = prevImg.getAttribute("src");
-    sliderImg.setAttribute("src", newSrcCurr);
-  } else {
-    const lastImg =
-      currImg.parentElement.parentElement.lastElementChild.querySelector("img");
-    currImg.classList.remove("js-slider__thumbs-image--current");
-    lastImg.classList.add("js-slider__thumbs-image--current");
-    const sliderImg = document.querySelector(".js-slider__image");
-    const newSrcCurr = lastImg.getAttribute("src");
-    sliderImg.setAttribute("src", newSrcCurr);
-  }
-};*/
-
 const onClose = function (event) {
   const slider = document.querySelector(".js-slider");
   slider.classList.remove("js-slider--active");
@@ -244,5 +182,3 @@ const onClose = function (event) {
     }
   });
 };
-
-//* PYTANIE: czy lepiej jest po kilka razy ustalac zmiennie w kazdej funkcji czy lepiej jest je wyciagnac poza funkcje?*/
