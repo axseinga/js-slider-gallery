@@ -27,20 +27,45 @@ const initEvents = function (imagesList, sliderRootElement) {
     });
   });
 
+  var runInterval;
+
   const navNext = sliderRootElement.querySelector(".js-slider__nav--next");
   navNext.addEventListener("click", function (event) {
     event.stopPropagation();
-    onImageNext();
+    if (!runInterval) {
+      runInterval = setInterval(
+        (function int() {
+          onImageNext();
+          return int;
+        })(),
+        2000
+      );
+    }
   });
 
   const navPrev = sliderRootElement.querySelector(".js-slider__nav--prev");
   navPrev.addEventListener("click", function (event) {
     event.stopPropagation();
-    onImagePrev();
+    if (!runInterval) {
+      runInterval = setInterval(
+        (function int() {
+          onImagePrev();
+          return int;
+        })(),
+        2000
+      );
+    }
   });
 
   const zoom = sliderRootElement.querySelector(".js-slider__zoom");
-  zoom.addEventListener("click", onClose);
+  zoom.addEventListener("click", function () {
+    clearInterval(runInterval);
+    runInterval = null;
+    while (runInterval !== null) {
+      runInterval = null;
+    }
+    onClose();
+  });
 };
 
 const fireCustomEvent = function (element, name) {
