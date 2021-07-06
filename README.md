@@ -15,19 +15,19 @@
 
 ### The challenge
 
-The goal was to create a slider image gallery based on vanilla Javascript and Customs Events and learn how to work in someone else's code. I was not allowed to change any HTML or CSS.
+The goal was to create a slider image gallery based on vanilla Javascript and Customs Events and learn how to work with code written by another developer. I was not allowed to change any HTML or CSS.
 
 The functionality of the slider:
 
-- images are grouped randomly in two groups (nice/good) automatically by JS code,
-- when the image is clicked the slider opens and based on images from the same group the gallery under the main image is created,
-- when the user clicks on the right or the left arrow the main images change and the yellow indicator points to the current image,
-- when the user clicks on space around the main image, the gallery disappears.
+- images are grouped randomly in groups (nice/good) by JS code,
+- when the image is clicked, the slider opens and based on images from the same group, the gallery under the main image is created,
+- when the user clicks on the right or on the left arrow, the main image changes and the yellow indicator points to the current image,
+- when the user clicks on the space around the main image, the gallery disappears.
 
 Additional tasks:
 
-- to create an infinity gallery, where is there is no next image then the gallery shows the first one and another way around,
-- to create an interval with a slide show, which stops when the arrow is clicked or when the gallery closes.
+- to create an infinity gallery, where if there is no next image, then the gallery shows the first one (and another way around),
+- to create an interval with functionality of a slide show, which stops when the arrow is clicked or when the gallery closes.
 
 ### Links
 
