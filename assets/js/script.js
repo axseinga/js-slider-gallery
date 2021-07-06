@@ -2,7 +2,7 @@ const init = function () {
   const imagesList = document.querySelectorAll(".gallery__item");
   imagesList.forEach((img) => {
     img.dataset.sliderGroupName = Math.random() > 0.5 ? "nice" : "good";
-  }); // za każdym przeładowaniem strony przydzielaj inną nazwę grupy dla zdjęcia
+  });
 
   runJSSlider();
 };
@@ -21,10 +21,6 @@ const startSlideShow = function () {
       2000
     );
   }
-
-  const eventSlider = new CustomEvent("startShow");
-
-  dispatchEvent(eventSlider);
 };
 
 const stopSlideShow = function () {
@@ -33,10 +29,6 @@ const stopSlideShow = function () {
   if (runInterval !== null) {
     runInterval = null;
   }
-
-  const eventSliderEnd = new CustomEvent("endShow");
-
-  dispatchEvent(eventSliderEnd);
 };
 
 const runJSSlider = function () {
@@ -145,41 +137,6 @@ const onImageClick = function (event, sliderRootElement, imagesSelector) {
   startSlideShow();
 };
 
-/* const onImageClick = function (event, sliderRootElement, imagesSelector) {
-  sliderRootElement.classList.add("js-slider--active");
-
-  const currImg = event.currentTarget.querySelector("img");
-  const currSrc = currImg.getAttribute("src");
-  const sliderImage = document.querySelector(".js-slider__image");
-  sliderImage.setAttribute("src", currSrc);
-
-  const currGroup = event.currentTarget.getAttribute("data-slider-group-name");
-  const imagesList = Array.from(document.querySelectorAll(imagesSelector));
-  const selectedImgs = imagesList.filter(
-    (img) => img.getAttribute("data-slider-group-name") === currGroup
-  );
-  const sliderThumbs = document.querySelector(".js-slider__thumbs");
-  const sliderThumb = document.querySelector(".js-slider__thumbs-item");
-  selectedImgs.forEach(function (img) {
-    const prevImg = img.querySelector("img");
-    const newThumb = sliderThumb.cloneNode([true]);
-    newThumb.classList.remove("js-slider__thumbs-item--prototype");
-    const src = prevImg.getAttribute("src");
-    const thumbImg = newThumb.querySelector("img");
-    thumbImg.setAttribute("src", src);
-    sliderThumbs.appendChild(newThumb);
-  });
-  const thumbImages = Array.from(sliderThumbs.querySelectorAll("img"));
-  thumbImages.forEach(function (img) {
-    const src = img.getAttribute("src");
-    if (src === currSrc) {
-      img.classList.add("js-slider__thumbs-image--current");
-    } else {
-      img.classList.remove("js-slider__thumbs-image--current");
-    }
-  });
-}; */
-
 const changeImg = function (newElement, startImg, currImg) {
   if (
     newElement &&
@@ -204,7 +161,6 @@ const changeImg = function (newElement, startImg, currImg) {
 
 const onImageNext = function (event) {
   console.log(this, "onImageNext");
-  // [this] wskazuje na element [.js-slider]
   const currImg = document.querySelector(".js-slider__thumbs-image--current");
   const newElement = currImg.parentElement.nextElementSibling;
   const startImg = currImg.parentElement.parentElement
@@ -228,33 +184,10 @@ const onClose = function (event) {
   slider.classList.remove("js-slider--active");
   const sliderThumbsList = document.querySelectorAll(".js-slider__thumbs-item");
   const sliderThumb = document.querySelector(".js-slider__thumbs");
-  console.log(sliderThumb);
   sliderThumbsList.forEach(function (thumb) {
     if (!thumb.classList.contains("js-slider__thumbs-item--prototype")) {
       thumb.parentElement.removeChild(thumb);
     }
   });
+  stopSlideShow();
 };
-
-// do intervala
-/*
-let Interval;
-
-if (!runInterval) {
-      runInterval = setInterval(
-        (function int() {
-          onImageNext();
-          return int;
-        })(),
-        2000
-      );
-    }
-
-
-==> onClose()
-clearInterval(runInterval);
-    runInterval = null;
-    if (runInterval !== null) {
-      runInterval = null;
-    }
-*/
