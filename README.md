@@ -15,7 +15,7 @@
 
 ### The challenge
 
-The goal was to create a slider image gallery based on vanilla Javascript and Customs Events and learn how to work in someone else's code.
+The goal was to create a slider image gallery based on vanilla Javascript and Customs Events and learn how to work in someone else's code. I was not allowed to change any HTML or CSS.
 
 The functionality of the slider:
 
@@ -31,7 +31,7 @@ Additional tasks:
 
 ### Links
 
-- Live Site URL: [Check it out here]()
+- Live Site URL: [Check it out here](https://axseinga-js-slider-gallery.netlify.app/)
 
 ## My process
 
