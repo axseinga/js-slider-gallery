@@ -1,110 +1,55 @@
-> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
-> 
-> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+# devmentor.pl - Javascript: Events
 
-&nbsp;
+## Table of contents
 
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
+## Overview
 
-# JavaScript: Zdarzenia
+### The challenge
 
-Otrzymaliśmy zadanie, aby utworzyć pokaz slajdów (galeria), który będzie uruchamiany po klinięciu w element `<figure>`, który zawiera element `<img>`. 
+The goal was to create a slider image gallery based on vanilla Javascript and Customs Events and learn how to work in someone else's code.
 
-Klient ma już gotową część kodu HTML, CSS oraz JS.
-Prosi nas, abyśmy HTML-a i CSS-a nie zmieniali, a w JavaScrip-cie trzymali się istniejącej już konwencji.
+The functionality of the slider:
 
-Element, w który będziemy klikać wygląda następująco:
+- images are grouped randomly in two groups (nice/good) automatically by JS code,
+- when the image is clicked the slider opens and based on images from the same group the gallery under the main image is created,
+- when the user clicks on the right or the left arrow the main images change and the yellow indicator points to the current image,
+- when the user clicks on space around the main image, the gallery disappears.
 
-```html
-<figure class="gallery__item gallery__item--pos1">
-    <img src="./assets/img/1.jpg" alt="1" class="gallery__image">
-    <figcaption class="gallery__caption">źródło: unsplash.com</figcaption>
-</figure>
-```
+Additional tasks:
 
-Natomiast kod HTML, który będziemy wykorzystywać do pokazów slajdów prezentuje sie w ten sposób:
+- to create an infinity gallery, where is there is no next image then the gallery shows the first one and another way around,
+- to create an interval with a slide show, which stops when the arrow is clicked or when the gallery closes.
 
-```html
-<section class="js-slider">
-        <header class="js-slider__zoom">
-            <span class="js-slider__nav js-slider__nav--prev">&lt;</span>
-            <span class="js-slider__nav js-slider__nav--next">&gt;</span>
-            <figure class="js-slider__wrapper">
-                <img class="js-slider__image" src="./assets/img/6.jpg" alt="1">
-                <figcaption class="js-slider__caption">źródło: unsplash.com</figcaption>
-            </figure>
-        </header>
-        <footer class="js-slider__thumbs">
-            <figure class="js-slider__thumbs-item js-slider__thumbs-item--prototype">
-                <img class="js-slider__thumbs-image">
-            </figure>
-        </footer>
-    </section>
-```
+### Links
 
-* **.js-slider__zoom** - zawierać ma aktualnie prezentowane zdjęcie
-* **.js-slider__thumbs** - zawierać będzie listę zdjęć o tej samej nazwie grupy, co kliknięte zdjęcie
+- Live Site URL: [Check it out here]()
 
-> Nazwa grupy jest przechowywana w atrybucie `data-slider-group-name` i jest generowana automatycznie przez JS, aby zasymulować zmieniający się kod HTML. 
+## My process
 
-Efekt po klinięciu, w któryś z obazów na stronie powinien wyglądać jak na poniższym obrazie
+### What I learned
 
-![](./assets/img/img1.png)
+To complete this task I learned a lot about events, event objects, and custom events. I had to read and understand the code written by another person and to be able to write my part of the code to make the application work. I added event listeners to arrows and layout elements and had to work out where to take advantage of the bubbling or capturing phase to stop the propagation of the events. I wrote three functions that are responsible for handling click events and refactored them after to keep my code up to the DRY principle and to make it more readable. One of the biggest challenges was to select the right argument to create an infinite gallery and to omit elements with class `js-slider__thumbs-item--prototype`. In the end, I learned how to use intervals. I encountered problems with clearing intervals after it was called. The method clearInterval() cleared only the first interval and the function was still running in the back after the gallery was closed. I found a great solution searching Stackoverflow and applied it to my code.
 
-&nbsp;
+### Useful resources
 
-> **Uwaga!** Celem tego projektu jest odnalezienie się w cudzym kodzie i wykonanie powierzonego zadania. Pamiętaj, że nad projektem zazwyczaj pracuje kilka osób, z różnym doświadczeniem (junior, regular, senior, a nawet lead czy architekt). To powoduje, że miejscami kod może być bardziej skomplikowany. Nie chodzi o to, abyś był w stanie sam taki napisać tylko móc go na tyle rozumieć, aby wykonać swoją część pracy.
+- [devmentor.pl](https://devmentor.pl/) - for this project I mainly used materials provided to me by my mentor.
+- [Stackoverflow](https://stackoverflow.com/questions/15413635/clearinterval-not-clearing-setintervalhttps://devmentor.pl/) - a thread with solution to clearing intervals.
 
-&nbsp;
+## Author
 
-## Implementacja
+- Github - [Axseinga](https://github.com/axseinga)
+- Frontend Mentor - [@Axseinga](https://www.frontendmentor.io/profile/axseinga)
+- LinkedIn - [@Agnieszka Urbanowicz](https://www.linkedin.com/in/agnieszka-urbanowicz-051147151/)
 
-Nasze rozwiązanie ma się opierać w głównej mierze na własnych eventach (CustomEvent), których nazwy są następujące:
+## Acknowledgments
 
-* **js-slider-img-click** - event, który jest uruchamiany po klinięciu w obrazek na stronie (jest to już zrobione w pliku `script.js`) i ma wyświetlić nasz pokaz slajdów
-
-* **js-slider-img-next** - event, który jest uruchamiany po klinięciu w prawą strzałkę na stronie i ma pokazać kolejny obrazek z dostępny w miniaturach o ile w ogóle stnieje.
-
-* **js-slider-img-prev** - podobnie jak wyżej tylko chodzi o lewą strzałkę
-
-* **js-slider-close** - event, który jest uruchamiany po klinięciu na wolną przestrzeń wokół prezentowanego zdjęcia czyli w element `.js-slider__zoom` (i tylko w ten element - trzeba uważasz na propagację event-ów).
-
-Do uruchomienia eventów będziemy używać napisanej już funkcji `fireCustomEvent`:
-
-```javascript
-const fireCustomEvent = function(element, name) {
-    console.log(element.className, '=>', name);
-
-    const event = new CustomEvent(name, {
-        bubbles: true,
-    });
-
-    element.dispatchEvent( event );
-}
-```
-
-Dla ułatwienia funkcja ta posiada `console.log`, która prezentuje nam informacje jaki event jest odpalany i na jakim elemencie.
-
-Zauważ również, że funkcja ta przyjmuje dwa parametry. Pierwszy to element na jakim ma być wywołany event, a drugi to jego nazwa.
-
-> Zajrzyj do pliku `./assets/js/script.js`, w którym masz opisane działania, które są niezbędne do wykonania zadania.
-
-> Zapoznaj się dokładnie ze strukturą HTML i CSS, co powinno Ci pomóc w odpowiednim zrealizowaniu wyzwania.
-
-## Dodatkowe zadania
-
-### Zadanie dodatkowe 1
-
-Możesz spróbować napisać kod, który pozwoli przełączać obrazki w nieskończoność po klinięciu w nawigację tj. jeśli nie mamy już następnego obrazka (lub poprzedniego) to wracamy do początku (lub końca).
-
-### Zadanie dodatkowe 2
-
-Tworzymy kod, który automatycznie, co zadaną ilość czasu sam przełącza obrazki.
-
-
-
-&nbsp;
-
-> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
-> 
-> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+Thanks to my [Mentor - devmentor.pl](https://devmentor.pl/) - for providing me with this task and for code review.
