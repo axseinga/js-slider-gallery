@@ -134,7 +134,9 @@ const onImageClick = function (event, sliderRootElement, imagesSelector) {
   sliderImage.setAttribute("src", currSrc);
   getGroupName(event, imagesSelector);
   createThumbs(selectedImgs, currImg, currSrc);
-  startSlideShow();
+  setTimeout(function () {
+    startSlideShow();
+  }, 2000);
 };
 
 const changeImg = function (newElement, startImg, currImg) {
