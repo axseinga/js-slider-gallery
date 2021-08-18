@@ -2,14 +2,15 @@
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Links](#links)
-- [My process](#my-process)
-  - [What I learned](#what-i-learned)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+-   [Overview](#overview)
+    -   [The challenge](#the-challenge)
+    -   [Screenshot](#screenshot)
+    -   [Links](#links)
+-   [My process](#my-process)
+    -   [What I learned](#what-i-learned)
+    -   [Useful resources](#useful-resources)
+-   [Author](#author)
+-   [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -19,19 +20,23 @@ The goal was to create a slider image gallery based on vanilla Javascript and Cu
 
 The functionality of the slider:
 
-- images are grouped randomly in groups (nice/good) by JS code,
-- when the image is clicked, the slider opens and based on images from the same group, the gallery under the main image is created,
-- when the user clicks on the right or on the left arrow, the main image changes and the yellow indicator points to the current image,
-- when the user clicks on the space around the main image, the gallery disappears.
+-   images are grouped randomly in groups (nice/good) by JS code,
+-   when the image is clicked, the slider opens and based on images from the same group, the gallery under the main image is created,
+-   when the user clicks on the right or on the left arrow, the main image changes and the yellow indicator points to the current image,
+-   when the user clicks on the space around the main image, the gallery disappears.
 
 Additional tasks:
 
-- to create an infinity gallery, where if there is no next image, then the gallery shows the first one (and another way around),
-- to create an interval with functionality of a slide show, which stops when the arrow is clicked or when the gallery closes.
+-   to create an infinity gallery, where if there is no next image, then the gallery shows the first one (and another way around),
+-   to create an interval with functionality of a slide show, which stops when the arrow is clicked or when the gallery closes.
+
+### Screenshot
+
+![](./assets/screenshot.png)
 
 ### Links
 
-- Live Site URL: [Check it out here](https://axseinga-js-slider-gallery.netlify.app/)
+-   Live Site URL: [Check it out here](https://axseinga-js-slider-gallery.netlify.app/)
 
 ## My process
 
@@ -41,14 +46,14 @@ To complete this task I learned a lot about events, event objects, and custom ev
 
 ### Useful resources
 
-- [devmentor.pl](https://devmentor.pl/) - for this project I mainly used materials provided to me by my mentor.
-- [Stackoverflow](https://stackoverflow.com/questions/15413635/clearinterval-not-clearing-setintervalhttps://devmentor.pl/) - a thread with solution to clearing intervals.
+-   [devmentor.pl](https://devmentor.pl/) - for this project I mainly used materials provided to me by my mentor.
+-   [Stackoverflow](https://stackoverflow.com/questions/15413635/clearinterval-not-clearing-setintervalhttps://devmentor.pl/) - a thread with solution to clearing intervals.
 
 ## Author
 
-- Github - [Axseinga](https://github.com/axseinga)
-- Frontend Mentor - [@Axseinga](https://www.frontendmentor.io/profile/axseinga)
-- LinkedIn - [@Agnieszka Urbanowicz](https://www.linkedin.com/in/agnieszka-urbanowicz-051147151/)
+-   Github - [Axseinga](https://github.com/axseinga)
+-   Frontend Mentor - [@Axseinga](https://www.frontendmentor.io/profile/axseinga)
+-   LinkedIn - [@Agnieszka Urbanowicz](https://www.linkedin.com/in/agnieszka-urbanowicz-051147151/)
 
 ## Acknowledgments
 
